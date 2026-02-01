@@ -14,7 +14,7 @@ export class TourManager {
             {
                 element: '.log-panel',
                 text: "DATA_LOGS: Track operation history, traversal paths, and system status updates in this dedicated terminal.",
-                position: 'left'
+                position: 'center'
             }
         ];
 
