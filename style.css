@@ -403,16 +403,42 @@ body {
     cursor: pointer;
 }
 
+
+/* 3D Font Styles */
 .node-text {
-    fill: var(--primary);
+    fill: #ffffff;
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow:
+        0 2px 0 #000,
+        0 0 10px var(--primary),
+        0 0 20px var(--primary);
+    stroke: none;
+    letter-spacing: 1.5px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.brand-name {
     font-family: var(--font-head);
     font-weight: 800;
-    /* Bolder */
-    font-size: 16px;
-    /* Larger */
-    text-shadow: 0 0 8px var(--primary);
-    stroke: none;
-    letter-spacing: 1px;
+    font-size: 1.4rem;
+    color: #fff;
+    text-shadow:
+        2px 2px 0px var(--secondary),
+        -1px -1px 0 var(--primary),
+        0 0 15px var(--primary);
+    letter-spacing: 0.1em;
+}
+
+.section-label {
+    font-family: var(--font-head);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 5px var(--primary-dim);
+    font-weight: 700;
 }
 
 .link-line {
@@ -454,12 +480,12 @@ body {
 
 .node-group.highlight-visited .node-text {
     fill: var(--secondary);
-    text-shadow: 0 0 5px var(--secondary);
+    text-shadow: 0 0 5px var(--secondary), 0 2px 0 #000;
 }
 
 .node-group.highlight-active-cursor .node-text {
-    fill: #000;
-    text-shadow: none;
+    fill: #fff;
+    text-shadow: 0 0 20px #fff;
 }
 
 @keyframes pulse {
@@ -536,20 +562,21 @@ body {
     }
 }
 
-/* Tour Styles */
+/* Tour Styles - Vibrant & Lively (No Blur) */
 .tour-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    /* Subtle darken instead of heavy blur */
+    background: rgba(0, 5, 20, 0.4);
     z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(3px);
     transition: opacity 0.3s;
+    /* Removed backdrop-filter to keep background crisp */
 }
 
 .tour-overlay.hidden {
@@ -558,13 +585,15 @@ body {
 }
 
 .tour-modal {
-    background: var(--bg-sidebar);
+    background: rgba(10, 16, 31, 0.95);
     border: 2px solid var(--primary);
     padding: 2rem;
     max-width: 500px;
     text-align: center;
-    box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
     position: relative;
+    backdrop-filter: blur(10px);
+    /* Keep modal blurred separate from bg */
 }
 
 .tour-modal::before {
@@ -583,12 +612,14 @@ body {
     margin-bottom: 1rem;
     letter-spacing: 0.2em;
     text-shadow: 0 0 10px var(--primary);
+    font-weight: 800;
 }
 
 .tour-text {
     margin-bottom: 2rem;
     color: var(--text-main);
     line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 .tour-actions {
@@ -597,15 +628,35 @@ body {
     gap: 1rem;
 }
 
+/* Vibrant Highlight Box */
 .tour-highlight {
     position: absolute;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--primary);
+    /* Use a spotlight effect with huge shadow to dim surroundings */
+    box-shadow: 0 0 0 9999px rgba(0, 5, 20, 0.6), 0 0 30px var(--primary);
+    border: 3px solid var(--primary);
     border-radius: var(--radius);
     pointer-events: none;
     transition: all 0.4s var(--ease);
     z-index: 1000;
     display: none;
+    animation: highlightPulse 2s infinite;
+}
+
+@keyframes highlightPulse {
+    0% {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 9999px rgba(0, 5, 20, 0.6), 0 0 30px var(--primary);
+    }
+
+    50% {
+        border-color: #fff;
+        box-shadow: 0 0 0 9999px rgba(0, 5, 20, 0.6), 0 0 50px var(--primary);
+    }
+
+    100% {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 9999px rgba(0, 5, 20, 0.6), 0 0 30px var(--primary);
+    }
 }
 
 .tour-highlight.active {
@@ -614,13 +665,20 @@ body {
 
 .tour-tooltip {
     position: absolute;
-    background: var(--bg-sidebar);
+    background: rgba(10, 16, 31, 0.95);
     border: 1px solid var(--primary);
-    padding: 1rem;
+    padding: 1.5rem;
     z-index: 1001;
-    max-width: 300px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 320px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     transition: all 0.4s var(--ease);
+    backdrop-filter: blur(10px);
+}
+
+.tour-tooltip p {
+    margin-bottom: 1rem;
+    color: #fff;
+    line-height: 1.5;
 }
 
 .tour-tooltip.hidden {
