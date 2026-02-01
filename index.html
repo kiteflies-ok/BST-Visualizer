@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BST Visualizer | DevTools</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="bg-stars"></canvas>
+    <div class="layout">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <span class="brand-name">BST Viz</span>
+                <span class="badge">PRO</span>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">Operations</label>
+                <div class="input-group">
+                    <input type="number" id="node-value" placeholder="Value..." class="input-modern">
+                </div>
+                <div class="btn-stack">
+                    <button id="btn-insert" class="btn btn-primary">
+                        <span class="btn-label">Insert</span>
+                        <span class="kbd">Enter</span>
+                    </button>
+                    <button id="btn-delete" class="btn btn-secondary">
+                        <span class="btn-label">Delete</span>
+                        <span class="kbd">Del</span>
+                    </button>
+                    <button id="btn-search" class="btn btn-secondary">
+                        <span class="btn-label">Search</span>
+                        <span class="kbd">S</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">Actions</label>
+                <div class="btn-grid">
+                    <button id="btn-random" class="btn btn-ghost" title="Add Random Node">
+                        🎲 Random
+                    </button>
+                    <button id="btn-clear" class="btn btn-ghost text-danger" title="Clear Tree">
+                        🗑️ Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <label class="section-label">Traversals</label>
+                <div class="btn-stack">
+                    <button id="btn-inorder" class="btn btn-outline">Inorder</button>
+                    <button id="btn-preorder" class="btn btn-outline">Preorder</button>
+                    <button id="btn-postorder" class="btn btn-outline">Postorder</button>
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="control-section">
+                <label class="section-label">Settings</label>
+                <div class="setting-row">
+                    <span>Speed</span>
+                    <input type="range" id="speed-range" min="1" max="100" value="60">
+                </div>
+                <div class="setting-row">
+                    <span>Audio</span>
+                    <button id="btn-audio-toggle" class="btn-icon">🔊</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Canvas -->
+        <main class="canvas-area">
+            <div class="canvas-header">
+                <div class="breadcrumbs">
+                    <span>projects</span>
+                    <span class="sep">/</span>
+                    <span class="active">bst-visualizer</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span id="system-status">Ready</span>
+                </div>
+            </div>
+
+            <div id="viz-container">
+                <svg id="tree-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+
+            <!-- Toast Container -->
+            <div id="toast-container"></div>
+        </main>
+
+        <!-- Event Log Panel -->
+        <aside class="log-panel">
+            <div class="panel-header">
+                <span class="panel-title">Event Log</span>
+                <button class="btn-icon-small" onclick="document.getElementById('code-trace').innerHTML=''">
+                    <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                        <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" />
+                    </svg>
+                </button>
+            </div>
+            <div id="code-trace" class="log-content">
+                <!-- Logs go here -->
+                <div class="log-entry system">
+                    <span class="time">00:00</span>
+                    <span class="msg">System initialized.</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Logic Scripts -->
+    <script type="module" src="./src/main.js"></script>
+
+    <!-- Tour Overlay -->
+    <div id="tour-overlay" class="tour-overlay hidden">
+        <div class="tour-modal">
+            <h2 class="tour-title">SYSTEM_INITIALIZED</h2>
+            <p class="tour-text">Welcome, Operator. Ready to engage the Visualization Core?</p>
+            <div class="tour-actions">
+                <button id="btn-start-tour" class="btn btn-primary">INITIALIZE_TOUR</button>
+                <button id="btn-skip-tour" class="btn btn-ghost">SKIP_SEQUENCE</button>
+            </div>
+        </div>
+        <div id="tour-highlight" class="tour-highlight"></div>
+        <div id="tour-tooltip" class="tour-tooltip hidden">
+            <p id="tour-desc">Description</p>
+            <button id="btn-next-tour" class="btn btn-primary btn-sm">NEXT >></button>
+        </div>
+    </div>
+</body>
+
+</html>
