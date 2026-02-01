@@ -3,7 +3,7 @@ export class TourManager {
         this.steps = [
             {
                 element: '.sidebar',
-                text: "MISSION_CONTROL: Input numeric data here to manipulate the binary structure. Use buttons or keyboard shortcuts (I, D, S).",
+                text: "MISSION_CONTROL: Input numeric data here to insert,delete and select into the binary structure. Use buttons or keyboard shortcuts (I, D, S).",
                 position: 'right'
             },
             {
