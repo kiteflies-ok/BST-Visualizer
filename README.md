@@ -1,7 +1,8 @@
 # BST-Visualizer
 Built using HTML, CSS (Vanilla Pro Dashboard), JAVASCRIPT (ES Modules)
 
-Visit the site locally 👉 : (https://kiteflies-ok.github.io/BST-Visualizer/)
+Visit the site on vercel 👉 : (https://bst-visualizer-two.vercel.app/)
+Visit the site on github 👉 : (https://kiteflies-ok.github.io/BST-Visualizer/)
 
 An interactive, professional visualizer, managing a Binary Search Tree through the following operations:
 1. Insert Node
